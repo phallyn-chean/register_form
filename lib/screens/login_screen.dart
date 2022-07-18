@@ -31,7 +31,6 @@ class _ScreenLoginState extends State<ScreenLogin> {
         if (value!.isEmpty){
           return ("Please Enter your Email");
         }
-
         //register expression for email validation
         if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9,-]+.[a-z]").hasMatch(value)){
           return ("Please Enter a valid email");
@@ -54,8 +53,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
       autofocus: false,
       controller: passwordController,
       validator: (value){
-        RegExp regex = new RegExp(r'^.{6,}$');
-
+        RegExp regex = RegExp(r'^.{6,}$');
         if (value!.isEmpty){
           return ("Password is required for login");
         }
@@ -63,6 +61,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
         if (!regex.hasMatch(value)){
           return ("Please Enter Valid Password(Min. 6 Character");
         }
+        return null;
       },
       onSaved: (value) {
         passwordController.text = value!;
